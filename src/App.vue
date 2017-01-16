@@ -1,13 +1,27 @@
 <template>
     <div id="app">
         <!-- 加载动画 -->
-        <!--<div class="loader" v-if="researchInfo.judgeShow"></div>-->
         <!-- MuseUI 加载动画 -->
+        <!--
+            <div class="mu-linear-progress" data-v-ecbf7674="" style="height: 5px; border-radius: 0;" v-if="researchInfo.judgeShow">
+                <div class="mu-linear-progress-indeterminate" style="height: 5px; background-color: rgb(255,94,27); border-radius: 5px;"></div>
+            </div>
+        -->
 
-        <div class="mu-linear-progress" data-v-ecbf7674="" style="height: 5px; border-radius: 0;" v-if="researchInfo.judgeShow">
-            <div class="mu-linear-progress-indeterminate" style="height: 5px; background-color: rgb(255,94,27); border-radius: 5px;"></div>
+        <div class="peeek-loading" v-if="researchInfo.judgeShow">
+           <ul>
+               <li></li>
+               <li></li>
+               <li></li>
+               <li></li>
+               <li></li>
+               <li></li>
+               <li></li>
+               <li></li>
+               <li></li>
+               <li></li>
+           </ul>
         </div>
-        <!--<mu-linear-progress :size="5" color="rgb(255,94,27)" v-bind:style="{ width: '100%',height: '10px' }"v-if="researchInfo.judgeShow" />-->
         <!-- 数据成功时 去除加载动画 -->
         <div id="service_research_router" v-else>
             <!-- 内容渲染 -->
@@ -107,34 +121,110 @@ export default {
                 color: $title-color
 
 // 加载动画
-.loader
-    &:before, &:after
-        position: absolute
-        top: 50%
-        left: 50%
-        border-radius: 50%
-        border-style: solid
-        border-top-color: #ECD078
-        border-right-color: #C02942
-        border-bottom-color: #542437
-        border-left-color: #53777A
-        content: ''
-        transform: translate(-50%, -50%)
-        animation: rotate 1.5s  infinite ease-in-out
-    &:before
-        border-width: 10vh
+.peeek-loading
+  background-color: rgb(255,94,27)
+  overflow: hidden
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  height: 100%
+  width: 100%
+  ul
+    position: absolute
+    left: calc(50% - 0.7em)
+    top: calc(50% - 4.2em)
+    display: inline-block
+    text-indent: 2.8em
+    li:after, &:after
+      width: 1.4em
+      height: 1.4em
+      background-color: #fff
+      border-radius: 100%
+    li:after
+      content: ""
+      display: block
     &:after
-        width: 30vh
-        height: 30vh
-        border-width: 2.5vh
-        animation-direction: reverse
+      content: ""
+      display: block
+      position: absolute
+      top: 2.8em
+  li
+    position: absolute
+    padding-bottom: 5.6em
+    top: 0
+    left: 0
+    &:nth-child(1)
+      transform: rotate(0deg)
+      animation-delay: 0.125s
+      &:after
+        animation-delay: 0.125s
+    &:nth-child(2)
+      transform: rotate(36deg)
+      animation-delay: 0.25s
+      &:after
+        animation-delay: 0.25s
+    &:nth-child(3)
+      transform: rotate(72deg)
+      animation-delay: 0.375s
+      &:after
+        animation-delay: 0.375s
+    &:nth-child(4)
+      transform: rotate(108deg)
+      animation-delay: 0.5s
+      &:after
+        animation-delay: 0.5s
+    &:nth-child(5)
+      transform: rotate(144deg)
+      animation-delay: 0.625s
+      &:after
+        animation-delay: 0.625s
+    &:nth-child(6)
+      transform: rotate(180deg)
+      animation-delay: 0.75s
+      &:after
+        animation-delay: 0.75s
+    &:nth-child(7)
+      transform: rotate(216deg)
+      animation-delay: 0.875s
+      &:after
+        animation-delay: 0.875s
+    &:nth-child(8)
+      transform: rotate(252deg)
+      animation-delay: 1s
+      &:after
+        animation-delay: 1s
+    &:nth-child(9)
+      transform: rotate(288deg)
+      animation-delay: 1.125s
+      &:after
+        animation-delay: 1.125s
+    &:nth-child(10)
+      transform: rotate(324deg)
+      animation-delay: 1.25s
+      &:after
+        animation-delay: 1.25s
+    animation: dotAnimation 2.5s infinite
+    &:after
+      animation: dotAnimationTwo 2.5s infinite
 
-@keyframes rotate
-    0%
-        transform: translate(-50%, -50%) rotate(0)
+@keyframes dotAnimation
+  0%, 55%, 100%
+    padding: 0 0 5.6em 0
 
-    100%
-        transform: translate(-50%, -50%) rotate(360deg)
+  5%,50%
+    padding: 2.8em 0
+
+
+@-webkit-keyframes dotAnimationTwo
+  0%, 55%, 100%
+    opacity: 1
+    transform: scale(1)
+
+  5%,50%
+    opacity: .5
+    transform: scale(0.5)
 
 .mu-checkbox-icon-uncheck, .mu-checkbox-icon-checked
     color: $theme-color !important

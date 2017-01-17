@@ -7,6 +7,6 @@ export const addState = (state,res) => {
 
     setTimeout(function() {
         state.researchInfo['judgeShow'] = false            // 当有数据时,设置加载动画状态为false
-    },2400)
+    },3500)
 }
 

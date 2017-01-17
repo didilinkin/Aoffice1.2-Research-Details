@@ -1,27 +1,7 @@
 <template>
     <div id="app">
-        <!-- 加载动画 -->
-        <!-- MuseUI 加载动画 -->
-        <!--
-            <div class="mu-linear-progress" data-v-ecbf7674="" style="height: 5px; border-radius: 0;" v-if="researchInfo.judgeShow">
-                <div class="mu-linear-progress-indeterminate" style="height: 5px; background-color: rgb(255,94,27); border-radius: 5px;"></div>
-            </div>
-        -->
-
-        <div class="peeek-loading" v-if="researchInfo.judgeShow">
-           <ul>
-               <li></li>
-               <li></li>
-               <li></li>
-               <li></li>
-               <li></li>
-               <li></li>
-               <li></li>
-               <li></li>
-               <li></li>
-               <li></li>
-           </ul>
-        </div>
+        <!-- 加载动画 ( 状态传递给动画组件 ) -->
+        <CssLoading v-if="researchInfo.judgeShow" />
         <!-- 数据成功时 去除加载动画 -->
         <div id="service_research_router" v-else>
             <!-- 内容渲染 -->
@@ -52,7 +32,8 @@
 <script>
 import      { mapActions, mapGetters } from 'vuex'
 import      Title           from    './components/Title.vue'
-const       components = { Title }
+import      CssLoading      from    './components/CssLoading.vue'
+const       components = { Title, CssLoading }
 
 export default {
     name: 'app',

@@ -6,7 +6,7 @@
         <div id="service_research_router" v-else>
             <!-- 内容渲染 -->
             <div class="research--box">
-                <img :src="researchInfo.appPic" />
+                <!-- <img :src="researchInfo.appPic" /> -->
                 <h3> {{ researchInfo.name }} </h3>
                 <p> {{ researchInfo.address }} </p>
             </div>

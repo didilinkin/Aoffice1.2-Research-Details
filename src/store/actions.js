@@ -5,8 +5,8 @@ import * as types from './mutations'
 
 export const setResearchInfo = ({commit}) => {
     // // 测试交互请求(可以获取到数据) 本地测试位置: "./data.json"
-    axios.post('./static/researchInfo_1.json', {
-    // axios.post("/api/es/details?code=" + $("#escode").val(), {
+    // axios.post('./static/researchInfo_1.json', {
+    axios.post("/api/es/details?code=" + $("#escode").val(), {
         // code: 'es011'
     })
     .then(function (response) {

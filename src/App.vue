@@ -78,7 +78,7 @@ export default {
     +auto--AppBar
     // 统一box样式
     .research--box
-        +auto--contentBox($autoMargin,rgba($title-color,.7),$text-size,rgba($title-color,.7),$text-size)
+        +auto--contentBox($autoMargin,rgba($title-color,.7),$title-size,rgba($title-color,.7),$text-size)
         +bC($F)
         >img
             @extend %imgCover
@@ -91,8 +91,10 @@ export default {
         @extend %auto--borderBottomSoild                    // 通用修饰下划线
         >p
             @extend %dib
+            @extend %justify
             &:first-child
-                width: 85%
+                width: 80%
+                padding-right: 5%
                 float: left
             &:last-child
                 width: 15%

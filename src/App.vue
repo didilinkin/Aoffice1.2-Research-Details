@@ -16,7 +16,7 @@
                 <p> {{ researchInfo.description }} </p>
             </div>
             <!-- 考察流程 -->
-            <div class="research--box">
+            <div id="research--box--last-child" class="research--box">
                 <Title :title_info = flow_title />
                 <ul class="flow--list">
                     <li v-for = "item in researchInfo.IPList">
@@ -49,6 +49,9 @@ export default {
             }
         }
     }
+    ,mounted: function() {
+        this.judgemedia()                                                                           // 判断使用环境 是否为安卓: 如果是安卓 增加间隙
+    }
     ,methods: {
         ...mapActions([ 'setResearchInfo' ])               // 目的: axios 获取家具信息
     }
@@ -60,6 +63,17 @@ export default {
     }
     ,computed: {
         ...mapGetters({ researchInfo: 'researchInfo' })
+        ,judgemedia: function () {
+            if ( /(Android)/i.test(navigator.userAgent) ){
+                setTimeout(() => {
+                    let box_lastChild_Obj = document.getElementById('research--box--last-child')           // 获取id为'furniture--box--last-child'的数组
+                    console.log(box_lastChild_Obj)
+                    box_lastChild_Obj.style.marginBottom = "34%"                                            // 设置margin-bottom数值
+                }, 5500)
+            }else {
+                console.log( '非安卓机' )
+            }
+        }
     }
     ,components: components
 }
